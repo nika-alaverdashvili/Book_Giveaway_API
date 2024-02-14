@@ -1,11 +1,15 @@
+"""
+Django admin customization.
+"""
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from django.utils.translation import gettext as _
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.utils.translation import gettext_lazy as _
+
 
 from core import models
 
 
-class CustomUserAdmin(UserAdmin):
+class UserAdmin(BaseUserAdmin):
     """Define the admin pages for users."""
     ordering = ['id']
     list_display = ['email', 'name']
@@ -41,4 +45,4 @@ class CustomUserAdmin(UserAdmin):
     )
 
 
-admin.site.register(models.User, CustomUserAdmin)
+admin.site.register(models.User, UserAdmin)
