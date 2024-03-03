@@ -35,7 +35,7 @@ class BookSerializer(serializers.ModelSerializer):
     author = AuthorSerializer()
     genre = GenreSerializer()
     condition = ConditionSerializer()
-    id = serializers.IntegerField(read_only=True, source='get_next_available_id')
+    id = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Book
